@@ -217,6 +217,27 @@ export default {
                         link: '/zh-cn/docs/user/datasource.html',
                     },
                     {
+                        title: 'SQL参考',
+                        children: [
+                            {
+                                title: 'SQL限制',
+                                link: '/zh-cn/docs/user/sqlreference/sql-restrictions.html',
+                            },
+                            {
+                                title: 'DML语句',
+                                link: '/zh-cn/docs/user/sqlreference/dml.html',
+                            },
+                            {
+                                title: 'SQL修饰',
+                                link: '/zh-cn/docs/user/sqlreference/sql-decoration.html',
+                            },
+                            {
+                                title: '函数',
+                                link: '/zh-cn/docs/user/sqlreference/function.html',
+                            },
+                        ]
+                    },
+                    {
                         title: 'APM',
                         children: [
                             {
