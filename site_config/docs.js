@@ -217,6 +217,27 @@ export default {
                         link: '/zh-cn/docs/user/datasource.html',
                     },
                     {
+                        title: 'SQL参考',
+                        children: [
+                            {
+                                title: 'SQL限制',
+                                link: '/zh-cn/docs/user/sqlreference/sql-restrictions.html',
+                            },
+                            {
+                                title: 'DML语句',
+                                link: '/zh-cn/docs/user/sqlreference/dml.html',
+                            },
+                            {
+                                title: 'SQL修饰',
+                                link: '/zh-cn/docs/user/sqlreference/sql-decoration.html',
+                            },
+                            {
+                                title: '函数',
+                                link: '/zh-cn/docs/user/sqlreference/function.html',
+                            },
+                        ]
+                    },
+                    {
                         title: 'APM',
                         children: [
                             {
@@ -248,6 +269,10 @@ export default {
                                 title: '事务状态',
                                 link: '/zh-cn/docs/user/appendix/global-transaction-status.html',
                             },
+                            {
+                                title: '事务隔离',
+                                link: '/zh-cn/docs/user/appendix/isolation.html',
+                            }
                         ]
                     }]
             },
@@ -302,6 +327,10 @@ export default {
                             {
                                 title: 'Docker部署',
                                 link: '/zh-cn/docs/ops/deploy-by-docker.html',
+                            },
+                            {
+                                title: 'Docker compose部署',
+                                link: '/zh-cn/docs/ops/deploy-by-docker-compose.html',
                             },
                             {
                                 title: 'Kubernetes部署',
