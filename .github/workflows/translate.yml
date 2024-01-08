@@ -41,6 +41,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.COMMIT_TOKEN }}
+          branch: translate_docs
       - name: Install MkDocs dependencies
         run: pip install -r requirements.txt
       - name: Deploy with MkDocs
