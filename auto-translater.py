@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 import os
 import openai  # pip install openai
+from openai import OpenAI
 import sys
 import re
 import yaml  # pip install PyYAML
 
+
 # 设置 OpenAI API Key 和 API Base 参数，通过 env.py 传入
 openai.api_key = os.environ.get("CHATGPT_API_KEY")
 openai.api_base = os.environ.get("CHATGPT_API_BASE")
+
+client = OpenAI(api_key = os.environ.get("CHATGPT_API_KEY"))
+
+
 
 # 设置最大输入字段，超出会拆分输入，防止超出输入字数限制
 max_length = 1800
@@ -42,11 +48,11 @@ front_matter_translation_rules = {
     # 调用 ChatGPT 自动翻译
     "title": lambda value, lang: translate_text(value, lang,"front-matter"),
     "description": lambda value, lang: translate_text(value, lang,"front-matter"),
-    
+
     # 使用固定的替换规则
     "categories": lambda value, lang: front_matter_replace(value, lang),
     "tags": lambda value, lang: front_matter_replace(value, lang),
-    
+
     # 未添加的字段将默认不翻译
 }
 
@@ -147,20 +153,20 @@ def translate_text(text, lang, type):
         "es": "Spanish",
         "ar": "Arabic"
     }[lang]
-    
+
     # Front Matter 与正文内容使用不同的 prompt 翻译
     # 翻译 Front Matter。
     if type == "front-matter":
-        completion = openai.ChatCompletion.create(
+        completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must only translate the text content, never interpret it."},
                 {"role": "user", "content": f"Translate into {target_lang}:\n\n{text}\n"},
             ],
-        )  
-    # 翻译正文
+        )
+        # 翻译正文
     elif type== "main-body":
-        completion = openai.ChatCompletion.create(
+        completion = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a professional translation engine, please translate the text into a colloquial, professional, elegant and fluent content, without the style of machine translation. You must maintain the original markdown format. You must not translate the `[to_be_replace[x]]` field.You must only translate the text content, never interpret it."},
@@ -381,7 +387,7 @@ try:
 
             # 强制将缓冲区中的数据刷新到终端中，使用 GitHub Action 时方便实时查看过程
             sys.stdout.flush()
-            
+
     # 所有任务完成的提示
     print("Congratulations! All files processed done.")
     sys.stdout.flush()
