@@ -43,9 +43,9 @@
     "message": "控制台样例",
     "description": "Navbar item with label Console sample"
   },
-  "item.label.Demos": {
-    "message": "样例",
-    "description": "Navbar item with label Demos"
+  "item.label.Designer": {
+    "message": "在线设计器",
+    "description": "Navbar item with label Saga Designer"
   },
   "item.label.Saga Designer": {
     "message": "Saga 设计器",
